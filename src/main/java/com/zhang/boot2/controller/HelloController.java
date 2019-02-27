@@ -1,27 +1,33 @@
 package com.zhang.boot2.controller;
 
-import com.google.code.kaptcha.impl.DefaultKaptcha;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+
+import com.google.code.kaptcha.impl.DefaultKaptcha;
+import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@Log4j2
 public class HelloController {
+
 
     @Autowired
     DefaultKaptcha defaultKaptcha;
 
     @GetMapping("/hello")
     public String hello(@RequestParam(name = "name", defaultValue = "tom") String name) {
+        log.info("我是日志");
         return "hello " + name + "!";
     }
 

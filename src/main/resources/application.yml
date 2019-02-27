@@ -4,3 +4,7 @@ server:
 mybatis:
   mapper-locations: classpath*:mapper/*.xml
   type-aliases-package: com.zhang.boot2.entity
+logging:
+  file: logs/boot.log
+  pattern:
+    console: "%d{yyyy-MM-dd-HH:mm:ss} [%thread] %-5level %logger- %msg%n"
